@@ -26,8 +26,41 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+h1 {
+ font-size: -webkit-xxx-large;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+.categorie-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 18px;
+}
+
+.categorie-button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: -webkit-xxx-large;
+  transition: color 0.3s ease;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 100px;
+  font-weight: bolder;
+}
+
+.categorie-button:first-child {
+  margin-top: 0;
+}
+
+
+.categorie-button:hover {
+  color: #EAB305;
 }

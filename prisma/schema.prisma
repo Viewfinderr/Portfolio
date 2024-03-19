@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Categories {
+  id               BigInt   @id @default(autoincrement())
+  created_at       DateTime @default(now()) @db.Timestamptz(6)
+  TinyTitle        String?  @db.VarChar
+  Tiny_Description String?  @map("Tiny Description")
+  TinyImg          String?  @db.VarChar
+  Title            String?  @db.VarChar
+  Description      String?
+  categoName       String?
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Contact {
+  id             BigInt   @id @default(autoincrement())
+  created_at     DateTime @default(now()) @db.Timestamptz(6)
+  Img            String?  @default("") @db.VarChar
+  Title          String   @default("") @db.VarChar
+  Url            String?  @default("") @db.VarChar
+  ContactDetails String?  @default("") @db.VarChar
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Education {
+  id         BigInt   @id @default(autoincrement())
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  Title      String?  @default("") @db.VarChar
+  Diplome    String?  @default("") @db.VarChar
+  Tasks      String?  @default("")
+  Date       String?
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Project {
+  id          BigInt   @id(map: "Projects_pkey") @default(autoincrement())
+  created_at  DateTime @default(now()) @db.Timestamptz(6)
+  Img         String?  @db.VarChar
+  Title       String   @default("") @db.VarChar
+  Description String?  @default("")
+  Slug        String?  @default("")
+  GitURL      String?  @default("") @db.VarChar
+  WebURL      String?  @default("") @db.VarChar
+  Skills      String?  @default("") @db.VarChar
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Projects {
+  id         BigInt   @id(map: "Projects_pkey1") @default(autoincrement())
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  Name       String?  @db.VarChar
+  Img        String?  @db.VarChar
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Skills {
+  id         BigInt   @id @default(autoincrement())
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  Img        String?
+  Title      String?
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Social {
+  id         BigInt   @id @default(autoincrement())
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  Name       String   @default("") @db.VarChar
+  Url        String   @default("") @db.VarChar
+  Img        String?  @default("") @db.VarChar
+}
